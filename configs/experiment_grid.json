@@ -1,0 +1,55 @@
+{
+  "name": "egg-classical-predeclared-grid-v1",
+  "development_fraction": 0.8,
+  "random_seed": 42,
+  "selection_metric": "macro_dice",
+  "tie_breakers": ["macro_iou", "candidate_order"],
+  "evaluation_partition_used_for_selection": false,
+  "candidates": [
+    {
+      "candidate_id": "bright_otsu_small_morph",
+      "rationale": "Tests bright foreground on dark backgrounds with minimal morphology to preserve small objects and thin boundaries.",
+      "config": {"method": "otsu", "polarity": "bright", "blur_kernel": 3, "morph_kernel": 3, "morph_open_iterations": 0, "morph_close_iterations": 1, "border_fraction": 0.04, "color_distance_threshold": 28.0}
+    },
+    {
+      "candidate_id": "bright_otsu_default_morph",
+      "rationale": "Reference bright-Otsu setting with moderate smoothing and cleanup to suppress speckle and close gaps.",
+      "config": {"method": "otsu", "polarity": "bright", "blur_kernel": 5, "morph_kernel": 5, "morph_open_iterations": 1, "morph_close_iterations": 2, "border_fraction": 0.04, "color_distance_threshold": 28.0}
+    },
+    {
+      "candidate_id": "bright_otsu_large_blur",
+      "rationale": "Tests stronger smoothing to reduce texture/noise while retaining bright-foreground Otsu polarity.",
+      "config": {"method": "otsu", "polarity": "bright", "blur_kernel": 7, "morph_kernel": 5, "morph_open_iterations": 1, "morph_close_iterations": 2, "border_fraction": 0.04, "color_distance_threshold": 28.0}
+    },
+    {
+      "candidate_id": "dark_otsu_small_morph",
+      "rationale": "Tests inverse threshold polarity for dark eggs or foreground against a brighter background with minimal morphology.",
+      "config": {"method": "otsu", "polarity": "dark", "blur_kernel": 3, "morph_kernel": 3, "morph_open_iterations": 0, "morph_close_iterations": 1, "border_fraction": 0.04, "color_distance_threshold": 28.0}
+    },
+    {
+      "candidate_id": "dark_otsu_default_morph",
+      "rationale": "Inverse-polarity counterpart to the reference setting, testing whether foreground contrast is darker than its background.",
+      "config": {"method": "otsu", "polarity": "dark", "blur_kernel": 5, "morph_kernel": 5, "morph_open_iterations": 1, "morph_close_iterations": 2, "border_fraction": 0.04, "color_distance_threshold": 28.0}
+    },
+    {
+      "candidate_id": "border_distance_16",
+      "rationale": "Low Lab border-color distance threshold tests sensitivity to subtle object/background color changes.",
+      "config": {"method": "border_distance", "polarity": "bright", "blur_kernel": 3, "morph_kernel": 3, "morph_open_iterations": 0, "morph_close_iterations": 1, "border_fraction": 0.04, "color_distance_threshold": 16.0}
+    },
+    {
+      "candidate_id": "border_distance_24",
+      "rationale": "Moderate Lab color-distance threshold is a balanced border-background contrast candidate.",
+      "config": {"method": "border_distance", "polarity": "bright", "blur_kernel": 5, "morph_kernel": 5, "morph_open_iterations": 1, "morph_close_iterations": 2, "border_fraction": 0.04, "color_distance_threshold": 24.0}
+    },
+    {
+      "candidate_id": "border_distance_36",
+      "rationale": "Higher Lab threshold tests rejection of more background variation and texture at the cost of subtle foreground regions.",
+      "config": {"method": "border_distance", "polarity": "bright", "blur_kernel": 5, "morph_kernel": 5, "morph_open_iterations": 1, "morph_close_iterations": 2, "border_fraction": 0.04, "color_distance_threshold": 36.0}
+    },
+    {
+      "candidate_id": "border_distance_48",
+      "rationale": "Most conservative tested Lab threshold plus stronger blur tests robustness when background texture/noise is prominent.",
+      "config": {"method": "border_distance", "polarity": "bright", "blur_kernel": 7, "morph_kernel": 5, "morph_open_iterations": 1, "morph_close_iterations": 2, "border_fraction": 0.04, "color_distance_threshold": 48.0}
+    }
+  ]
+}

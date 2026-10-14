@@ -1,0 +1,21 @@
+# Local input data, downloaded checkpoints, generated runs and large media
+data/
+models/
+runs/
+*.pth
+*.pt
+*.ckpt
+*.mp4
+
+# Python environments/caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+
+# Editor/OS noise
+.DS_Store
+.vscode/
+.idea/
