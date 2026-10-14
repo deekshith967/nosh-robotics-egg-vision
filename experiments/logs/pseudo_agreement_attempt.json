@@ -1,0 +1,9 @@
+{
+  "status": "blocked",
+  "timestamp_utc": "2026-10-14T11:00:17.712565+00:00",
+  "duration_seconds": 0.0,
+  "blocker": "FileNotFoundError: SAM manifest not found: runs/sam/sam_manifest.json",
+  "comparison_target": "SAM pseudo-labels only; never verified ground truth",
+  "summary": null,
+  "metrics": null
+}

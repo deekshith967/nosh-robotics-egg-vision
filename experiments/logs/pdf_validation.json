@@ -1,0 +1,14 @@
+{
+  "timestamp_utc": "2026-10-14T11:03:47.484074+00:00",
+  "status": "passed",
+  "pdf_path": "/home/user/nosh-robotics-egg-vision/reports/submission_report.pdf",
+  "page_count": 4,
+  "size_bytes": 12301,
+  "checks": {
+    "pdf_header": true,
+    "has_pages": true,
+    "has_title": true,
+    "has_limitations": true,
+    "has_ai_disclosure": true
+  }
+}

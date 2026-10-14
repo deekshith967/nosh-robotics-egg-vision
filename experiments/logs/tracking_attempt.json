@@ -1,0 +1,9 @@
+{
+  "status": "blocked",
+  "timestamp_utc": "2026-10-14T11:00:17.566100+00:00",
+  "input_filename": "egg-video.mp4",
+  "output_filename": "annotated.mp4",
+  "blocker": "FileNotFoundError: local video not found: data/egg-video.mp4. Download the supplied video to a local file first; remote fetching is not performed.",
+  "frames_processed": 0,
+  "annotated_mp4_generated": false
+}

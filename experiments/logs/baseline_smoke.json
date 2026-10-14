@@ -1,0 +1,23 @@
+{
+  "kind": "synthetic_smoke_test_not_dataset_evaluation",
+  "seed": 7,
+  "image_size_wh": [
+    240,
+    180
+  ],
+  "config": {
+    "method": "otsu",
+    "polarity": "bright",
+    "blur_kernel": 5,
+    "morph_kernel": 5,
+    "morph_open_iterations": 1,
+    "morph_close_iterations": 2,
+    "border_fraction": 0.04,
+    "color_distance_threshold": 28.0
+  },
+  "synthetic_iou": 0.998817,
+  "synthetic_dice": 0.999408,
+  "prediction_foreground_pixels": 5071,
+  "ground_truth_foreground_pixels": 5069,
+  "status": "passed"
+}

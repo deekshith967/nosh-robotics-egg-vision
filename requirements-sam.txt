@@ -1,0 +1,5 @@
+# Optional pretrained-SAM environment; install the base requirements first.
+# Choose the matching CPU/CUDA PyTorch wheels from https://pytorch.org/get-started/locally/.
+torch>=2.0,<3
+torchvision>=0.15,<1
+git+https://github.com/facebookresearch/segment-anything.git@dca509fe793f601edb92606367a655c15ac00fdf
