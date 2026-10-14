@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2026-10-14T11:00:17.772721+00:00",
+  "timestamp_utc": "2026-10-14T11:03:46.183402+00:00",
   "repository": "/home/user/nosh-robotics-egg-vision",
   "python": "3.11.2",
   "platform": "Linux-6.1.158+-x86_64-with-glibc2.36",
@@ -8,15 +8,15 @@
   "resources": {
     "memory": {
       "total_bytes": 4131278848,
-      "available_bytes": 3847884800,
+      "available_bytes": 3843747840,
       "swap_total_bytes": 0,
       "swap_free_bytes": 0
     },
     "disk": {
       "path": "/home/user/nosh-robotics-egg-vision",
       "total_bytes": 21834924032,
-      "used_bytes": 1264156672,
-      "free_bytes": 20285554688
+      "used_bytes": 1265192960,
+      "free_bytes": 20284518400
     }
   },
   "python_modules_available": {

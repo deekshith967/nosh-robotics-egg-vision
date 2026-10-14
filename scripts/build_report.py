@@ -15,6 +15,7 @@ from reportlab.lib.enums import TA_CENTER, TA_LEFT
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import mm
+from pypdf import PdfReader
 from reportlab.platypus import (
     PageBreak,
     Paragraph,
@@ -88,6 +89,32 @@ def metric_table(summary: dict[str, Any] | None, styles: dict[str, ParagraphStyl
         ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
     ]))
     return table
+
+
+def _validate_and_log_pdf(pdf_path: Path, validation_log: Path) -> dict[str, Any]:
+    raw = pdf_path.read_bytes()
+    reader = PdfReader(str(pdf_path))
+    text = "\n".join(page.extract_text() or "" for page in reader.pages)
+    checks = {
+        "pdf_header": raw.startswith(b"%PDF-"),
+        "has_pages": len(reader.pages) > 0,
+        "has_title": "Egg Vision Assignment" in text,
+        "has_limitations": "SUBMISSION LIMITATION" in text,
+        "has_ai_disclosure": "AI assistance disclosure" in text,
+    }
+    result = {
+        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "status": "passed" if all(checks.values()) else "failed",
+        "pdf_path": str(pdf_path.resolve()),
+        "page_count": len(reader.pages),
+        "size_bytes": len(raw),
+        "checks": checks,
+    }
+    validation_log.parent.mkdir(parents=True, exist_ok=True)
+    validation_log.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    if result["status"] != "passed":
+        raise RuntimeError(f"PDF validation failed; see {validation_log}: {checks}")
+    return result
 
 
 def build_pdf(args: argparse.Namespace) -> None:
@@ -359,7 +386,7 @@ def build_pdf(args: argparse.Namespace) -> None:
         ("eggvision/sam_inference.py", "Optional pretrained SAM image inference"),
         ("eggvision/tracking.py", "Classical detections, persistent IDs, MP4 and JSON output"),
         ("tests/", "Unit, data-format, split, evaluation, and synthetic-video tests"),
-        ("experiments/logs/", "Input audit, test/smoke verification logs"),
+        ("experiments/logs/", "Input audit, test/smoke verification, and PDF validation logs"),
         ("runs/", "Ignored local experiment outputs, SAM masks, and video artifacts"),
     ]
     file_rows = [["Path", "Purpose"]] + [[Paragraph(f"<font name='Courier'>{html.escape(path)}</font>", styles["small"]), Paragraph(html.escape(desc), styles["small"])] for path, desc in files]
@@ -394,6 +421,7 @@ def build_pdf(args: argparse.Namespace) -> None:
     ))
 
     doc.build(story, onFirstPage=on_page, onLaterPages=on_page)
+    _validate_and_log_pdf(page_path, args.validation_log)
 
 
 def main() -> int:
@@ -410,6 +438,7 @@ def main() -> int:
     parser.add_argument("--verification", type=Path, default=ROOT / "experiments" / "logs" / "verification.json")
     parser.add_argument("--audit", type=Path, default=ROOT / "experiments" / "logs" / "input_audit.json")
     parser.add_argument("--output", type=Path, default=ROOT / "reports" / "submission_report.pdf")
+    parser.add_argument("--validation-log", type=Path, default=ROOT / "experiments" / "logs" / "pdf_validation.json")
     args = parser.parse_args()
     build_pdf(args)
     print(f"Wrote report: {args.output.resolve()}")

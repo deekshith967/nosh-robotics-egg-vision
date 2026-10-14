@@ -30,6 +30,6 @@ Source hosts are blocked by this runtime's egress restrictions. No requests were
 5. Run `python scripts/run_sam.py --data data/egg-dataset --checkpoint models/sam_vit_b_01ec64.pth --model-type vit_b --prompt-mode annotations --device auto --output runs/sam`. Confirm the manifest has no skipped images. These outputs remain pseudo-labels, not verified ground truth.
 6. Run `python scripts/compare_sam_classical.py --data data/egg-dataset --classical runs/classical/experiment.json --sam runs/sam/sam_manifest.json --output runs/pseudo-agreement` only as agreement analysis; report it separately from ground-truth scores.
 7. Place the exact supplied clip at `data/egg-video.mp4`. Run `python scripts/track_video.py --video data/egg-video.mp4 --config runs/classical/selected_config.json --output runs/tracking/annotated.mp4`; watch the entire MP4 and review ID continuity and JSON metadata.
-8. Run `python scripts/verify.py` and `python scripts/build_report.py`. Review the regenerated PDF and every result against the saved logs before publication.
+8. Run `python scripts/verify.py` and `python scripts/build_report.py`. Review the regenerated PDF and every result against the saved logs; confirm `experiments/logs/pdf_validation.json` reports `passed` before publication.
 
 Until those four missing inputs are supplied, the assignment remains **partially implemented but not complete**. No real-data scores or supplied-video output should be stated.

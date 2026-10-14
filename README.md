@@ -120,12 +120,12 @@ python scripts/build_report.py \
   --output reports/submission_report.pdf
 ```
 
-Omit any `--sam` or `--tracking` path that does not exist; the report will mark that workstream as not run/blocked. Do not invent metrics to fill a missing result.
+Omit any `--sam` or `--tracking` path that does not exist; the report will mark that workstream as not run/blocked. Each successful build writes `experiments/logs/pdf_validation.json` with page count, byte size, and PDF-content checks. Do not invent metrics to fill a missing result.
 
 ## Logs, outputs, and Git hygiene
 
 - `configs/experiment_grid.json` is the checked-in, predeclared tuning configuration; each successful run records its SHA-256, selected config, seed, and split details.
-- `experiments/logs/baseline_smoke.json`, `input_audit.json`, `source_access.json`, `verification.json`, and the `*_attempt.json` files are checked-in logs; the baseline fixture is **synthetic**, not a dataset experiment, and the attempt logs record the exact missing-input blockers.
+- `experiments/logs/baseline_smoke.json`, `input_audit.json`, `source_access.json`, `verification.json`, `pdf_validation.json`, and the `*_attempt.json` files are checked-in logs; the baseline fixture is **synthetic**, not a dataset experiment, and the attempt logs record the exact missing-input blockers.
 - Real experiment artifacts, downloaded inputs/checkpoints, and MP4 outputs are under ignored `runs/`, `data/`, and `models/` paths. Keep checkpoints, videos, secrets, and unnecessary datasets out of Git.
 - Configuration, code, protocol, test suite, logs, and this report are small, reviewable source deliverables.
 - Before submission, verify report values against run JSON/CSV, confirm all dataset images were processed by SAM, confirm the 80/20 split is group-safe, and play the annotated MP4.

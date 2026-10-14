@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2026-10-14T11:00:18.783003+00:00",
+  "timestamp_utc": "2026-10-14T11:03:47.251389+00:00",
   "status": "passed",
   "test_command": "/home/user/nosh-robotics-egg-vision/.venv/bin/python -m pytest -q",
   "test_exit_code": 0,
@@ -10,9 +10,9 @@
       "skipped": 0,
       "errors": 0
     },
-    "pytest_summary_line": "21 passed in 0.55s"
+    "pytest_summary_line": "21 passed in 0.62s"
   },
-  "test_output_tail": ".....................                                                    [100%]\n21 passed in 0.55s\n",
+  "test_output_tail": ".....................                                                    [100%]\n21 passed in 0.62s\n",
   "smoke_command": "/home/user/nosh-robotics-egg-vision/.venv/bin/python scripts/smoke_baseline.py",
   "smoke_exit_code": 0,
   "smoke_output": "{\n  \"kind\": \"synthetic_smoke_test_not_dataset_evaluation\",\n  \"seed\": 7,\n  \"image_size_wh\": [\n    240,\n    180\n  ],\n  \"config\": {\n    \"method\": \"otsu\",\n    \"polarity\": \"bright\",\n    \"blur_kernel\": 5,\n    \"morph_kernel\": 5,\n    \"morph_open_iterations\": 1,\n    \"morph_close_iterations\": 2,\n    \"border_fraction\": 0.04,\n    \"color_distance_threshold\": 28.0\n  },\n  \"synthetic_iou\": 0.998817,\n  \"synthetic_dice\": 0.999408,\n  \"prediction_foreground_pixels\": 5071,\n  \"ground_truth_foreground_pixels\": 5069,\n  \"status\": \"passed\"\n}\n",
