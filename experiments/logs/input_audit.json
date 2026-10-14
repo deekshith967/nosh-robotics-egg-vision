@@ -1,0 +1,54 @@
+{
+  "timestamp_utc": "2026-10-14T11:00:17.772721+00:00",
+  "repository": "/home/user/nosh-robotics-egg-vision",
+  "python": "3.11.2",
+  "platform": "Linux-6.1.158+-x86_64-with-glibc2.36",
+  "cpu_cores": 2,
+  "gpu_probe": "nvidia-smi not found; no GPU confirmed",
+  "resources": {
+    "memory": {
+      "total_bytes": 4131278848,
+      "available_bytes": 3847884800,
+      "swap_total_bytes": 0,
+      "swap_free_bytes": 0
+    },
+    "disk": {
+      "path": "/home/user/nosh-robotics-egg-vision",
+      "total_bytes": 21834924032,
+      "used_bytes": 1264156672,
+      "free_bytes": 20285554688
+    }
+  },
+  "python_modules_available": {
+    "numpy": true,
+    "cv2": true,
+    "torch": false,
+    "segment_anything": false,
+    "reportlab": true
+  },
+  "inputs": {
+    "assignment_pdf": {
+      "path": "/home/user/nosh-robotics-egg-vision/assignment.pdf",
+      "available": false,
+      "candidate_pdfs": []
+    },
+    "dataset": {
+      "path": "/home/user/nosh-robotics-egg-vision/data/egg-dataset",
+      "available": false,
+      "image_count": 0
+    },
+    "video": {
+      "path": "/home/user/nosh-robotics-egg-vision/data/egg-video.mp4",
+      "available": false
+    },
+    "sam_checkpoint": {
+      "filename": "sam_vit_b_01ec64.pth",
+      "available": false
+    }
+  },
+  "limitations": [
+    "No dataset-specific metrics can be computed without annotated dataset images.",
+    "SAM inference cannot run without the optional dependencies and a local checkpoint.",
+    "The supplied video cannot be processed until a local copy is provided."
+  ]
+}

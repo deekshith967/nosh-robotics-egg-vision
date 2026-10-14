@@ -1,0 +1,11 @@
+{
+  "status": "blocked",
+  "timestamp_utc": "2026-10-14T11:00:17.397433+00:00",
+  "dataset_path": "/home/user/nosh-robotics-egg-vision/data/egg-dataset",
+  "checkpoint_filename": "sam_vit_b_01ec64.pth",
+  "model_type": "vit_b",
+  "prompt_mode": "annotations",
+  "blocker": "FileNotFoundError: dataset directory does not exist: /home/user/nosh-robotics-egg-vision/data/egg-dataset",
+  "processed_count": 0,
+  "metrics": null
+}

@@ -1,0 +1,89 @@
+{
+  "timestamp_utc": "2026-10-14T10:02:40Z",
+  "scope": "Input-source availability audit; this is not a successful-download claim.",
+  "policy_blocker": "This runtime does not permit outbound requests to the supplied Roboflow, Google Drive, YouTube, or official SAM checkpoint hosts. No HTTP request was sent to those hosts.",
+  "supplied_sources": [
+    {
+      "name": "Roboflow egg-vzhtr dataset v1",
+      "url": "https://universe.roboflow.com/fire-bf7qe/egg-vzhtr/dataset/1",
+      "request_sent": false,
+      "http_status": null,
+      "redirect_chain": null,
+      "file_obtained": false,
+      "file_type_checked": false,
+      "archive_integrity_checked": false,
+      "local_files": [],
+      "blocker": "Source host is outside permitted outbound egress for this runtime."
+    },
+    {
+      "name": "Alternative dataset ZIP on Google Drive",
+      "url": "https://drive.google.com/file/d/1a58rACcCFnaj0ZiDoNyGbDWXunRyWziv/view?usp=sharing",
+      "request_sent": false,
+      "http_status": null,
+      "redirect_chain": null,
+      "file_obtained": false,
+      "file_type_checked": false,
+      "archive_integrity_checked": false,
+      "local_files": [],
+      "blocker": "Google Drive host is outside permitted outbound egress for this runtime."
+    },
+    {
+      "name": "Specified YouTube video",
+      "url": "https://www.youtube.com/watch?v=Y4JyV94y2_A",
+      "request_sent": false,
+      "http_status": null,
+      "redirect_chain": null,
+      "file_obtained": false,
+      "file_type_checked": false,
+      "archive_integrity_checked": false,
+      "local_files": [],
+      "blocker": "YouTube host is outside permitted outbound egress for this runtime; yt-dlp is also not installed."
+    },
+    {
+      "name": "Official SAM ViT-B checkpoint referenced by the pinned upstream README",
+      "url": "https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth",
+      "request_sent": false,
+      "http_status": null,
+      "redirect_chain": null,
+      "file_obtained": false,
+      "file_type_checked": false,
+      "archive_integrity_checked": false,
+      "local_files": [],
+      "blocker": "Checkpoint host is outside permitted outbound egress for this runtime."
+    }
+  ],
+  "permitted_github_checks": [
+    {
+      "url": "https://api.github.com/repos/deekshith967/nosh-robotics-egg-vision/git/trees/main?recursive=1",
+      "http_status": 200,
+      "result": "Upstream main tree contains README.md only; no assignment PDF, dataset, or downloader is present."
+    },
+    {
+      "url": "https://api.github.com/search/repositories?q=egg-vzhtr&per_page=10",
+      "http_status": 200,
+      "result_count": 0,
+      "result": "No GitHub repository mirror with this exact dataset identifier was found; no replacement dataset was used."
+    }
+  ],
+  "sam_reference": {
+    "repository": "https://github.com/facebookresearch/segment-anything",
+    "pinned_commit": "dca509fe793f601edb92606367a655c15ac00fdf",
+    "license_checked_in_upstream_readme": "Apache-2.0",
+    "checkpoint_url_listed_in_upstream_readme": "https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth",
+    "checkpoint_obtained_or_hash_verified": false,
+    "note": "Upstream README identifies the official checkpoint and states the model is Apache 2.0. No checkpoint or upstream checksum was downloaded/verified here."
+  },
+  "assignment_pdf": {
+    "local_search": "No assignment PDF found in the repository or /home/user during inspection.",
+    "upstream_github_tree_checked": true,
+    "found": false,
+    "next_action": "User must attach/upload the original PDF; do not infer additional requirements."
+  },
+  "download_verification": {
+    "files_obtained": [],
+    "mime_or_magic_checked": false,
+    "redirects_inspected": false,
+    "archive_tested": false,
+    "reason": "No source download request was permitted/sent, so these checks are not applicable."
+  }
+}
